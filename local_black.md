@@ -8,7 +8,7 @@
 
 - 表名：
 
-```sqlite：
+```sqlite
 create table local_blacks
 (
     owner_user_id    varchar(64),
