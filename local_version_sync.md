@@ -59,9 +59,23 @@ LIMIT 1
 | errCode  | number | 自定义即可，0 成功，非 0 失败 | 获取不到报错 |
 | errMsg   | string | 详细的 err 信息               |              |
 
-```sqlite
+```sql
+-- 第一次设置版本表时为创建
 INSERT INTO `local_sync_version` (`table`, `entity_id`, `version_id`, `version`, `create_time`, `id_list`)
 		VALUES('local_group_entities_version', '1076204769', '667aabe3417b67f0f0d3cdee', 1076204769, 0, '["8879166186","1695766238","2882899447","5292156665"]');
+
+-- 第二次调用时为更新
+UPDATE
+	`local_sync_version`
+SET
+	`table` = "local_group_entities_version",
+	`entity_id` = "1076204769",
+	`version_id` = "667aabe3417b67f0f0d3cdee",
+	`version` = 1076204769,
+	`id_list` = "[\"8879166186\",\"1695766238\",\"2882899447\",\"5292156665\"]"
+WHERE
+	`table` = "local_group_entities_version"
+	AND `entity_id` = "1076204769";
 ```
 
 - deleteVersionSync
