@@ -96,7 +96,7 @@ SELECT count(*) FROM `local_group_members` WHERE group_id = "x"
 | 输入参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
 | groupID     |string                                       |   ||
-| userIDList     |[]string                                       |   ||
+| userIDList     |[]string                                       | 数组对象转为String  ||
 
 
 | 返回参数     | 类型                                                         | 说明 |备注|
@@ -281,7 +281,7 @@ SELECT * FROM `local_group_members` WHERE group_id = "x" And role_level = 2
 | count       |int                                       |   ||
 | joinTimeBegin     |string                                       |   ||
 | joinTimeEnd     |int                                       |   ||
-| userIDList     | []string                                       |   ||
+| userIDList     |[]string                                       | 数组对象转为String  ||
 
 | 返回参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
