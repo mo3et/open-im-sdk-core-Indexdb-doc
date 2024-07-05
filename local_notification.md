@@ -58,3 +58,19 @@ INSERT INTO `local_notification_seqs` (`conversation_id`, `seq`) VALUES ("10001"
 SELECT * from local_notification_seqs where 1 = 1;
 ```
 
+- batchInsertNotificationSeq
+
+| 输入参数       | 类型   | 说明 | 备注 |
+| -------------- | ------ | ---- | ---- |
+| []local_notification_seqs | string | （表对象数据） |对象转换成string|
+
+
+| 返回参数 | 类型   | 说明                                        | 备注 |
+| -------- | ------ |-------------------------------------------| ---- |
+| errCode  | number | 自定义即可，0成功，非0失败                            |      |
+| errMsg   | string | 详细的err信息                                  |      |
+
+```sql
+INSERT INTO `local_notification_seqs` (`conversation_id`, `seq`) 
+VALUES ("n_2882899447_69085919821", 2), ("n_2882899447_69085919822", 3);
+```
