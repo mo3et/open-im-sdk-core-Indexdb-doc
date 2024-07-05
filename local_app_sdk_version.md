@@ -43,7 +43,11 @@ SELECT * FROM `local_app_sdk_version` LIMIT 1
 | errCode  | number | 自定义即可，0 成功，非 0 失败 |      |
 | errMsg   | string | 详细的 err 信息               |      |
 
-```sqlite
+```sql
+-- 若初始化未找到版本，则创建
+INSERT INTO `local_app_sdk_version` (`version`) VALUES ("3.8.0");
+
+-- 若已经存在版本，则更新
 UPDATE `local_app_sdk_version`
 SET `version`= "4.0.0"
 WHERE
