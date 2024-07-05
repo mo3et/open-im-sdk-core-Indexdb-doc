@@ -132,7 +132,7 @@ FROM `local_conversations`
 | -------- | -------- | -------------------------------------------- | ---- |
 | errCode  | number   | 自定义即可，0成功，非0失败                   |      |
 | errMsg   | string   | 详细的err信息                                |      |
-| data     | string[] | 所有单聊会话的 conversation_id（会话ID）列表 |      |
+| data     | string | 所有单聊会话的 conversation_id（会话ID）列表 | 会话id数组 转 String     |
 
 参考 SQL 语句说明：
 
@@ -152,7 +152,7 @@ SELECT conversation_id FROM `local_conversations` WHERE conversation_type = 1
 | -------- | -------- | -------------------------------------------- | ---- |
 | errCode  | number   | 自定义即可，0成功，非0失败                   |      |
 | errMsg   | string   | 详细的err信息                                |      |
-| data     | string[] | 所有单聊会话的 conversation_id（会话ID）列表 |      |
+| data     | string | 所有单聊会话的 conversation_id（会话ID）列表 | 单聊会话id数组 转 String     |
 
 参考 SQL 语句说明：
 

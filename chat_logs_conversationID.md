@@ -130,7 +130,7 @@ SELECT * FROM `chat_logs_si_7788_7789` WHERE seq = 1000 LIMIT 1;
 | 输入参数       | 类型     | 说明    | 备注 |
 | -------------- | -------- | ------- | ---- |
 | conversationID | string   | 会话 ID |      |
-| msgIDs         | []string | 消息 ID |      |
+| msgIDs         | string | 消息 ID | 消息id数组 转为String     |
 
 | 返回参数 | 类型     | 说明                    | 备注                           |
 | -------- |--------|-----------------------| ------------------------------ |

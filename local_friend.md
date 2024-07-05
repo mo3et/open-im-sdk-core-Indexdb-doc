@@ -70,6 +70,20 @@ VALUES ("123", "456", "hello", 1666778999, 0, "789", "hhhh", "", "", "")
 DELETE FROM `local_friends` WHERE owner_user_id="3433303585" and friend_user_id="x"
 ```
 
+- getFriendListCount
+
+**无输入参数**
+
+| 返回参数     | 类型            | 说明 | 备注  |
+| --------- | ------------ | ----- |-----|
+| errCode      | number   | 自定义即可，0成功，非0失败 |     |
+| errMsg     | string     | 详细的err信息 |     |
+| data    | string | FriendListCount ||
+
+```sqlite
+SELECT COUNT(*) FROM `local_friends`;
+```
+
 - updateFriend
 
 | 输入参数     | 类型     | 说明 | 备注       |
@@ -140,6 +154,35 @@ WHERE owner_user_id = "3433303585"
 ORDER BY name
 LIMIT 5
 offset 10
+```
+
+- batchInsertFriend
+
+| 输入参数     | 类型     | 说明 | 备注       |
+| --------- |--------| ----- |----------|
+|LocalFriend   | string | （表对象数据）数组 |数组对象转换成string|
+
+| 返回参数     | 类型            | 说明 | 备注  |
+| --------- | ------------ | ----- |-----|
+| errCode      | number   | 自定义即可，0成功，非0失败 |     |
+| errMsg     | string     | 详细的err信息 |     |
+
+```sqlite
+INSERT INTO `local_friends` (`owner_user_id`, `friend_user_id`, `remark`, `create_time`, `add_source`, `operator_user_id`, `name`, `face_url`, `ex`, `attached_info`, `is_pinned`)
+		VALUES('1695766238', '1234567890', 'hello', 1666778999, 0, '789', 'hhhh', '', '', '', FALSE), ('1695766238', '1234567891', 'hi', 1666779000, 1, '790', 'aaaa', 'https://example.com/face.png', 'example', 'info', TRUE), ;
+```
+
+- deleteAllFriend
+
+**无输入参数**
+
+| 返回参数     | 类型            | 说明 | 备注  |
+| --------- | ------------ | ----- |-----|
+| errCode      | number   | 自定义即可，0成功，非0失败 |     |
+| errMsg     | string     | 详细的err信息 |     |
+
+``` sqlite
+DELETE FROM `local_friends`
 ```
 
 - searchFriendList

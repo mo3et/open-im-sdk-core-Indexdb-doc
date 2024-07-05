@@ -96,7 +96,7 @@ SELECT count(*) FROM `local_group_members` WHERE group_id = "x"
 | 输入参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
 | groupID     |string                                       |   ||
-| userIDList     |[]string                                       |   ||
+| userIDList     |string                                       | userid数组转为String   ||
 
 
 | 返回参数     | 类型                                                         | 说明 |备注|
@@ -142,6 +142,65 @@ SELECT `user_id` FROM `local_group_members` WHERE group_id = "x" And role_level 
 **参考sql语句说明：**
 ```sql
 SELECT * FROM `local_group_members` WHERE group_id = "x" 
+```
+
+- GetGroupMemberListByUserIDs
+
+| 输入参数     | 类型                                                         | 说明 | 备注 |
+| --------- | ------------------------------------------------------------ | ----- |--|
+| groupID     |string                                       |   |  |
+| filter     |int                                       |   | 总共7种取值，下面说明 |
+| offset     |int                                       |  偏移 |  |
+| count     |int                                       |  获取总数 |  |
+| userIDs  | string |userid数组转为String  | |
+
+| 返回参数     | 类型                                                         | 说明 |备注|
+| --------- | ------------------------------------------------------------ | ----- |-----------------------|
+| errCode      | number                                         | 自定义即可，0成功，非0失败|没有返回空数组不报错|
+| errMsg     | string                                          | 详细的err信息 ||
+| data      | string                                          | 可为"" []LocalGroupMember |转化为 string 类型|
+
+**参考sql语句说明：**
+```sql
+ -- filter为0: (获取所有的群成员)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND user_id IN ("userID1", "userID2") 
+ORDER BY role_level DESC, join_time ASC 
+LIMIT 20 OFFSET 10;
+
+-- filter为1: (获取群主)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND role_level = 100 AND user_id IN ("userID1", "userID2") 
+LIMIT 20 OFFSET 10;
+
+-- filter为2: (获取群管理员)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND role_level = 60 AND user_id IN ("userID1", "userID2") 
+ORDER BY join_time ASC 
+LIMIT 20 OFFSET 10;
+
+-- filter为3: (获取普通成员)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND role_level = 20 AND user_id IN ("userID1", "userID2") 
+ORDER BY join_time ASC 
+LIMIT 20 OFFSET 10;
+
+-- filter为4: (获取群管理员与普通成员)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND (role_level = 60 OR role_level = 20) AND user_id IN ("userID1", "userID2") 
+ORDER BY role_level DESC, join_time ASC 
+LIMIT 20 OFFSET 10;
+
+-- filter为5: (获取群主与管理员)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND (role_level = 100 OR role_level = 60) AND user_id IN ("userID1", "userID2") 
+ORDER BY role_level DESC, join_time ASC 
+LIMIT 20 OFFSET 10;
+
+-- filter为6: (获取群成员不包含自己, 其中 user_id 为登陆者实例ID)
+SELECT * FROM `local_group_members` 
+WHERE group_id = "x" AND user_id != "xx" AND user_id IN ("userID1", "userID2") 
+LIMIT 20 OFFSET 10;
 ```
 
 - getGroupMemberListSplit
@@ -222,7 +281,7 @@ SELECT * FROM `local_group_members` WHERE group_id = "x" And role_level = 2
 | count       |int                                       |   ||
 | joinTimeBegin     |string                                       |   ||
 | joinTimeEnd     |int                                       |   ||
-| userIDList     | []string                                       |   ||
+| userIDList     | string                                       | userid数组转为String  ||
 
 | 返回参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|

@@ -109,7 +109,37 @@ SET `group_id`="1234567",
 WHERE `group_id` = "1234567"
 ```
 
+- batchInsertGroup
 
+| 输入参数     | 类型     | 说明 | 备注       |
+| --------- |--------| ----- |----------|
+|LocalGroup   | []string | LocalGroup 表对象数据 |对象转换成string|
+
+| 返回参数     | 类型            | 说明 | 备注  |
+| --------- | ------------ | ----- |-----|
+| errCode      | number   | 自定义即可，0成功，非0失败 |     |
+| errMsg     | string     | 详细的err信息 |     |
+
+
+```sql
+INSERT INTO `local_groups` (`group_id`, `name`, `notification`, `introduction`, `face_url`, `create_time`, `status`, `creator_user_id`, `group_type`, `owner_user_id`, `member_count`, `ex`, `attached_info`, `need_verification`, `look_member_info`, `apply_member_friend`, `notification_update_time`, `notification_user_id`)
+		VALUES("1234567", "测试1234", "", "", "", 1666777417, 0, "", 0, "", 0, "", "", "", 0, 0, 0, 0, ""), ("1234568", "测试5678", "新的通知", "这是一个测试组", "https://example.com/face.png", 1666777420, 1, "user123", 1, "user456", 10, "ex", "Attach", 1, 1, 1, 1666777425, "user789");
+```
+
+
+- DeleteAllGroup
+
+**无输入参数**
+
+| 返回参数    | 类型     | 说明             | 备注  |
+|---------|--------|----------------|-----|
+| errCode | number | 自定义即可，0成功，非0失败 |     |
+| errMsg  | string | 详细的err信息       |     |
+
+
+```sql
+DELETE FROM `local_groups`
+```
 
 - getJoinedGroupListDB
 
@@ -227,7 +257,7 @@ SELECT DISTINCT group_id FROM local_group_members
 
  | 输入参数     | 类型                                                         | 说明 |备注|
  | --------- | ------------------------------------------------------------ | ----- |-----------------------|
- | groupIDs | []string | |
+ | groupIDs | string |群id数组 转换为String |
 
 | 返回参数 | 类型   | 说明                       | 备注             |
 | -------- | ------ | -------------------------- | ---------------- |
