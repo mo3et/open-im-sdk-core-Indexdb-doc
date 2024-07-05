@@ -152,7 +152,7 @@ SELECT * FROM `local_group_members` WHERE group_id = "x"
 | filter     |int                                       |   | 总共7种取值，下面说明 |
 | offset     |int                                       |  偏移 |  |
 | count     |int                                       |  获取总数 |  |
-| loginUserID  | string | |登陆者实例ID |
+| userIDs  | []string | | |
 
 | 返回参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
