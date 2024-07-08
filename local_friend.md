@@ -76,7 +76,7 @@ DELETE FROM `local_friends` WHERE owner_user_id="3433303585" and friend_user_id=
 
 | 返回参数     | 类型            | 说明 | 备注  |
 | --------- | ------------ | ----- |-----|
-| errCode      | number   | 自定义即可，0成功，非0失败 |     |
+| errCode      | number   | 自定义即可，0成功，非0失败 |  如果获取不到信息需要返回错误   |
 | errMsg     | string     | 详细的err信息 |     |
 | data    | string | FriendListCount ||
 
@@ -139,7 +139,6 @@ WHERE owner_user_id = "3433303585"
 | count  | int |     | 取出数据数量 |
 |ownerUserID    | string |     |     |
 
-**无输入参数**
 
 | 返回参数    | 类型     | 说明             | 备注  |
 |---------|--------|----------------|-----|
