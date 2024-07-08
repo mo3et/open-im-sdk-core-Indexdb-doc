@@ -20,11 +20,11 @@ CREATE TABLE `local_app_sdk_version` (
 
 **无输入参数**
 
-| 返回参数 | 类型   | 说明                              | 备注              |
-| -------- | ------ | --------------------------------- | ----------------- |
-| errCode  | number | 自定义即可，0 成功，非 0 失败     |                   |
-| errMsg   | string | 详细的 err 信息                   |                   |
-| data     | string | LocalAppSDKVersion （表对象数据） | 对象转换成 string |
+| 返回参数 | 类型   | 说明                              | 备注                     |
+| -------- | ------ | --------------------------------- | ------------------------ |
+| errCode  | number | 自定义即可，0 成功，非 0 失败     | 如果获取不到信息需要返回错误 |
+| errMsg   | string | 详细的 err 信息                   |                          |
+| data     | string | LocalAppSDKVersion （表对象数据） | 对象转换成 string        |
 
 **参考 sql 语句说明：**
 
