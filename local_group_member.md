@@ -197,10 +197,6 @@ WHERE group_id = "x" AND (role_level = 100 OR role_level = 60) AND user_id IN ("
 ORDER BY role_level DESC, join_time ASC 
 LIMIT 20 OFFSET 10;
 
--- filter为6: (获取群成员不包含自己, 其中 user_id 为登陆者实例ID)
-SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND user_id != "xx" AND user_id IN ("userID1", "userID2") 
-LIMIT 20 OFFSET 10;
 ```
 
 - getGroupMemberListSplit
