@@ -113,7 +113,7 @@ WHERE `group_id` = "1234567"
 
 | 输入参数     | 类型     | 说明 | 备注       |
 | --------- |--------| ----- |----------|
-|LocalGroup   | []string | LocalGroup 表对象数据 |对象转换成string|
+|LocalGroup   | string | []LocalGroup 表对象数据 | 数组对象转换成string |
 
 | 返回参数     | 类型            | 说明 | 备注  |
 | --------- | ------------ | ----- |-----|

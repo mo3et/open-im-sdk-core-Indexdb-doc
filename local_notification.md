@@ -62,7 +62,7 @@ SELECT * from local_notification_seqs where 1 = 1;
 
 | 输入参数       | 类型   | 说明 | 备注 |
 | -------------- | ------ | ---- | ---- |
-| []local_notification_seqs | string | （表对象数据） |对象转换成string|
+| local_notification_seqs | string | []local_notification_seq 表对象数据  |数组对象转换成String|
 
 
 | 返回参数 | 类型   | 说明                                        | 备注 |
