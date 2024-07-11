@@ -39,7 +39,7 @@ create table local_sg_chat_logs
 
 | 输入参数 | 类型 | 说明 | 备注 |
 | --------- |--------| ----- |-----|
-| LocalChatLog | string |（表对象数据） |对象转换成string|
+| LocalChatLog | string |（表对象数据） |数组对象转换成string|
 | groupID | string | | |
 
 | 返回参数 | 类型 | 说明 | 备注 |

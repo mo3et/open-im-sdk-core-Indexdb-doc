@@ -150,8 +150,6 @@ SELECT * FROM `local_group_members` WHERE group_id = "x"
 | --------- | ------------------------------------------------------------ | ----- |--|
 | groupID     |string                                       |   |  |
 | filter     |int                                       |   | 总共7种取值，下面说明 |
-| offset     |int                                       |  偏移 |  |
-| count     |int                                       |  获取总数 |  |
 | userIDs  | string |userid数组转为String  | |
 
 | 返回参数     | 类型                                                         | 说明 |备注|
@@ -164,38 +162,27 @@ SELECT * FROM `local_group_members` WHERE group_id = "x"
 ```sql
  -- filter为0: (获取所有的群成员)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND user_id IN ("userID1", "userID2") 
-ORDER BY role_level DESC, join_time ASC 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND user_id IN ("userID1", "userID2") ;
 
 -- filter为1: (获取群主)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND role_level = 100 AND user_id IN ("userID1", "userID2") 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND role_level = 100 AND user_id IN ("userID1", "userID2") ;
 
 -- filter为2: (获取群管理员)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND role_level = 60 AND user_id IN ("userID1", "userID2") 
-ORDER BY join_time ASC 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND role_level = 60 AND user_id IN ("userID1", "userID2") ;
 
 -- filter为3: (获取普通成员)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND role_level = 20 AND user_id IN ("userID1", "userID2") 
-ORDER BY join_time ASC 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND role_level = 20 AND user_id IN ("userID1", "userID2") ;
 
 -- filter为4: (获取群管理员与普通成员)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND (role_level = 60 OR role_level = 20) AND user_id IN ("userID1", "userID2") 
-ORDER BY role_level DESC, join_time ASC 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND (role_level = 60 OR role_level = 20) AND user_id IN ("userID1", "userID2") ;
 
 -- filter为5: (获取群主与管理员)
 SELECT * FROM `local_group_members` 
-WHERE group_id = "x" AND (role_level = 100 OR role_level = 60) AND user_id IN ("userID1", "userID2") 
-ORDER BY role_level DESC, join_time ASC 
-LIMIT 20 OFFSET 10;
+WHERE group_id = "x" AND (role_level = 100 OR role_level = 60) AND user_id IN ("userID1", "userID2") ;
 
 ```
 
@@ -347,7 +334,7 @@ INSERT INTO `local_group_members` (`group_id`,`user_id`,`nickname`,`user_group_f
 
 | 输入参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
-| groupMember     |[]LocalGroupMember                                       |   | |
+| groupMember     | string                                     | []LocalGroupMember 表对象数据  |数组对象转换成String |
 
 | 返回参数     | 类型                                                         | 说明 |备注|
 | --------- | ------------------------------------------------------------ | ----- |-----------------------|
