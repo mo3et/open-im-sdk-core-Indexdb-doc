@@ -4,7 +4,9 @@
 
 > 所有的db接口返回值，统一由errCode,errMsg,data字段转换为字符串异步返回
 
+
 ### 主Table结构表
+> 该表为 sqlite 自动生成的表，不需要进行手动创建！
 
 - 表名：`sqlite_master`
 
