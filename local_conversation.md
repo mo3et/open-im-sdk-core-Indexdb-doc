@@ -293,7 +293,7 @@ WHERE conversation_id = "123141"
 
 
 ```sql
-DELETE FROM local_conversation;
+DELETE FROM local_conversations;
 ```
 
 
