@@ -210,7 +210,7 @@ SELECT * FROM `chat_logs_si_7788_7789`  ORDER BY send_time DESC LIMIT 30;
 SELECT IFNULL(max(seq),0) FROM `local_chat_logs`;
 ```
 
-- getConversationNormalMsgSeqNoinit
+- CheckConversationNormalMsgSeq
 
 | 输入参数           | 类型                                                         | 说明                  |备注|
 |----------------| ------------------------------------------------------------ |---------------------|-----------------------|
