@@ -5,7 +5,7 @@
 ###  读扩散消息表
 - 表名：chat_logs_si_7788_7789
 >注：读扩散表为动态生成，表名也是，规则为chat_logs_+conversationID，
-原有代码中，是在GetMessage和GetMessageBySeq和GetMessageListNoTime这三个函数中进行判断，如果没有就动态生成该表
+原有代码中，是在 `GetMessage`、`GetMessageBySeq`、`BatchInsertMessageList`、`GetConversationNormalMsgSeq` 和 `GetMessageListNoTime` 这五个函数中进行判断，如果没有就动态生成该表
 
 ```sqlite
 CREATE TABLE `chat_logs_si_7788_7789` (
