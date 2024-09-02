@@ -5,7 +5,7 @@
 ###  读扩散消息表
 - 表名：chat_logs_si_7788_7789
 >注：读扩散表为动态生成，表名也是，规则为chat_logs_+conversationID，
-原有代码中，是在 `GetMessage`、`GetMessageBySeq`、`BatchInsertMessageList`、`GetConversationNormalMsgSeq` 和 `GetMessageListNoTime` 这五个函数中进行判断，如果没有就动态生成该表
+原有代码中，是在 `GetMessage`、`GetMessageBySeq`、`BatchInsertMessageList`、`GetConversationNormalMsgSeq`、`GetLatestActiveMessage` 和 `GetMessageListNoTime` 这六个函数中进行判断，如果没有就动态生成该表
 
 ```sqlite
 CREATE TABLE `chat_logs_si_7788_7789` (
@@ -188,8 +188,6 @@ SELECT * FROM `chat_logs_si_7788_7789` WHERE seq IN (1,2,3,4) ORDER BY send_time
 SELECT * FROM `chat_logs_si_7788_7789`  ORDER BY send_time DESC LIMIT 30;
 
 ```
-
-[comment]: <> "- setChatLogFailedStatus"
 
 
 - getConversationNormalMsgSeq
@@ -1016,3 +1014,27 @@ SELECT * FROM `chat_logs_si_7788_7789` WHERE content_type = 114
 
 ```
 
+
+- getLatestActiveMessage
+
+| 输入参数           | 类型                                                         | 说明                  |备注|
+|----------------| ------------------------------------------------------------ |---------------------|-----------------------|
+| conversationID | string  | 会话ID                |
+| isReverse      | boolean | 消息为正向拉取还是反向拉取       |默认情况为false，即为正向拉取（从新消息到老消息），order by 后面的排序规则为send_time DESC 降序排列，当为true的情况，即为反向拉取，order by 后面的排序规则为send_time ASC 升序排列|
+
+
+| 返回参数     | 类型                                                         | 说明 |备注|
+| --------- | ------------------------------------------------------------ | ----- |-----------------------|
+| errCode      | number                                         | 自定义即可，0成功，非0失败 |获取不到的时候返回空数组不需要返回错误|
+| errMsg     | string                                          | 详细的err信息 ||
+| data      | string                                          | []LocalChatLog（消息表对象数组数据） |对象转换成string|
+
+**参考sql语句说明：**
+
+```sql
+SELECT * FROM `chat_logs_si_7788_7789`
+WHERE `status` < 4
+ORDER BY `send_time` DESC
+LIMIT 1;
+
+```
